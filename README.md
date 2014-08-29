@@ -5,11 +5,6 @@
 [![License](https://img.shields.io/cocoapods/l/MochaAsyncTest.svg?style=flat)](http://cocoadocs.org/docsets/MochaAsyncTest)
 [![Platform](https://img.shields.io/cocoapods/p/MochaAsyncTest.svg?style=flat)](http://cocoadocs.org/docsets/MochaAsyncTest)
 
-## Usage
-
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
-## Requirements
 
 ## Installation
 
@@ -17,6 +12,48 @@ MochaAsyncTest is available through [CocoaPods](http://cocoapods.org). To instal
 it, simply add the following line to your Podfile:
 
     pod "MochaAsyncTest"
+
+## Usage
+
+### done
+
+When pass the test then call `done()`
+
+### error
+
+When fail the test then call `error(NSError *error)`
+
+```objc
+describe(@"MochaAsyncTest", ^{
+    it(@"pass test", ^{
+        [MochaAsyncTest runBlock:^(MochaAsyncDone done, MochaAsyncDoneWithError error) {
+            // async function
+            double delayInSeconds = 2.0;
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+            dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+            dispatch_after(popTime, queue, ^(void) {
+                done();// => done async test
+            });
+        }];
+    });
+    it(@"fail test", ^{
+        [MochaAsyncTest runBlock:^(MochaAsyncDone done, MochaAsyncDoneWithError error) {
+            // async function
+            double delayInSeconds = 2.0;
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+            dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+            dispatch_after(popTime, queue, ^(void) {
+                // fail
+                error([[NSError alloc] initWithDomain:@"xxx" code:0 userInfo:@{}]);
+            });
+        }];
+    });
+
+});
+```
+
+## Requirements
+
 
 ## Author
 
