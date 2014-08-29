@@ -17,7 +17,7 @@ it, simply add the following line to your Podfile:
 
 ```objc
 @interface MochaAsyncTest : NSObject
-+ (void)runBlock:(void (^)(MochaAsyncDone done, MochaAsyncDoneWithError error)) runTestBlock;
++ (void)runBlock:(void (^)(MochaAsyncDone done, MochaAsyncDoneWithError fail)) runTestBlock;
 
 + (void)runBlock:(void (^)(MochaAsyncDone, MochaAsyncDoneWithError)) runTestBlock timeout:(NSTimeInterval) timeout;
 @end
@@ -26,13 +26,13 @@ it, simply add the following line to your Podfile:
 You can use it for async test.
 
 ```objc
-[MochaAsyncTest runBlock:^(MochaAsyncDone done, MochaAsyncDoneWithError error) {
+[MochaAsyncTest runBlock:^(MochaAsyncDone done, MochaAsyncDoneWithError fail) {
     /*
      async function
     */
     done();
     // or
-    error(error);
+    fail(error);
 }];
 ```
 
