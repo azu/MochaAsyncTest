@@ -54,6 +54,8 @@ describe(@"MochaAsyncTest", ^{
 
 ## Requirements
 
+- XCTest
+- [ishkawa/NSRunLoop-PerformBlock](https://github.com/ishkawa/NSRunLoop-PerformBlock "ishkawa/NSRunLoop-PerformBlock")
 
 ## Author
 
