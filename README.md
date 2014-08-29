@@ -40,9 +40,9 @@ You can use it for async test.
 
 When pass the test, you have to call `done()`
 
-### error
+### fail
 
-When fail the test, you have to call `error(NSError *error)`
+When fail the test, you have to call `fail(NSError *error)`
 
 ```objc
 describe(@"MochaAsyncTest", ^{
@@ -65,7 +65,7 @@ describe(@"MochaAsyncTest", ^{
             dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
             dispatch_after(popTime, queue, ^(void) {
                 // fail
-                error([[NSError alloc] initWithDomain:@"xxx" code:0 userInfo:@{}]);
+                fail([[NSError alloc] initWithDomain:@"xxx" code:0 userInfo:@{}]);
             });
         }];
     });

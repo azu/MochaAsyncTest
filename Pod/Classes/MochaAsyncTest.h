@@ -11,7 +11,7 @@ typedef void(^MochaAsyncDone)();
 typedef void(^MochaAsyncDoneWithError)(NSError *error);
 
 @interface MochaAsyncTest : NSObject
-+ (void)runBlock:(void (^)(MochaAsyncDone done, MochaAsyncDoneWithError error)) runTestBlock;
++ (void)runBlock:(void (^)(MochaAsyncDone done, MochaAsyncDoneWithError fail)) runTestBlock;
 
 + (void)runBlock:(void (^)(MochaAsyncDone, MochaAsyncDoneWithError)) runTestBlock timeout:(NSTimeInterval) timeout;
 @end
