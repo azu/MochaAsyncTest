@@ -1,0 +1,20 @@
+PODS:
+  - Kiwi (2.3.0)
+  - MochaAsyncTest (0.1.0):
+    - NSRunLoop+PerformBlock
+  - NSRunLoop+PerformBlock (0.2.0)
+
+DEPENDENCIES:
+  - Kiwi
+  - MochaAsyncTest (from `../`)
+
+EXTERNAL SOURCES:
+  MochaAsyncTest:
+    :path: ../
+
+SPEC CHECKSUMS:
+  Kiwi: 54bece5b35564d9b8e03c608d926f1a22fcfc589
+  MochaAsyncTest: e75c3bc2fd3d0b1e09693ea89e76ae7b2a8b2de6
+  NSRunLoop+PerformBlock: 97e4339572c5481d9051cdc13b06b088fa449ae2
+
+COCOAPODS: 0.33.1

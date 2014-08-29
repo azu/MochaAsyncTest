@@ -6,37 +6,35 @@
 //  Copyright (c) 2014 azu. All rights reserved.
 //
 
+#import "MochaAsyncTest.h"
+
 SPEC_BEGIN(InitialTests)
 
-describe(@"My initial tests", ^{
+    describe(@"MochaAsynTest", ^{
+        it(@"pass test", ^{
+            [MochaAsyncTest runBlock:^(MochaAsyncDone done, MochaAsyncDoneWithError error) {
+                // async function
+                double delayInSeconds = 2.0;
+                dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+                dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+                dispatch_after(popTime, queue, ^(void) {
+                    done();// => done async test
+                });
+            }];
+        });
+        it(@"fail test", ^{
+            [MochaAsyncTest runBlock:^(MochaAsyncDone done, MochaAsyncDoneWithError error) {
+                // async function
+                double delayInSeconds = 2.0;
+                dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+                dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+                dispatch_after(popTime, queue, ^(void) {
+                    // fail
+                    error([[NSError alloc] initWithDomain:@"xxx" code:0 userInfo:@{}]);
+                });
+            }];
+        });
 
-  context(@"will fail", ^{
-
-      it(@"can do maths", ^{
-          [[@1 should] equal:@2];
-      });
-
-      it(@"can read", ^{
-          [[@"number" should] equal:@"string"];
-      });
-    
-      it(@"will wait and fail", ^{
-          NSObject *object = [[NSObject alloc] init];
-          [[expectFutureValue(object) shouldEventually] receive:@selector(autoContentAccessingProxy)];
-      });
-  });
-
-  context(@"will pass", ^{
-    
-      it(@"can do maths", ^{
-        [[@1 should] beLessThan:@23];
-      });
-    
-      it(@"can read", ^{
-          [[@"team" shouldNot] containString:@"I"];
-      });  
-  });
-  
-});
+    });
 
 SPEC_END
