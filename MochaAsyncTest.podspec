@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "MochaAsyncTest"
-  s.version          = "0.2.1"
+  s.version          = "0.2.2"
   s.summary          = "Async test using mocha's done style."
   s.homepage         = "https://github.com/azu/MochaAsyncTest"
   s.license          = 'MIT'
