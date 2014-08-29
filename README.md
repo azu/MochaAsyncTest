@@ -47,7 +47,7 @@ When fail the test, you have to call `fail(NSError *error)`
 ```objc
 describe(@"MochaAsyncTest", ^{
     it(@"pass test", ^{
-        [MochaAsyncTest runBlock:^(MochaAsyncDone done, MochaAsyncDoneWithError error) {
+        [MochaAsyncTest runBlock:^(MochaAsyncDone done, MochaAsyncDoneWithError fail) {
             // async function
             double delayInSeconds = 2.0;
             dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
@@ -58,7 +58,7 @@ describe(@"MochaAsyncTest", ^{
         }];
     });
     it(@"fail test", ^{
-        [MochaAsyncTest runBlock:^(MochaAsyncDone done, MochaAsyncDoneWithError error) {
+        [MochaAsyncTest runBlock:^(MochaAsyncDone done, MochaAsyncDoneWithError fail) {
             // async function
             double delayInSeconds = 2.0;
             dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
