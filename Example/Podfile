@@ -1,0 +1,9 @@
+target 'MochaAsyncTest', :exclusive => true do
+  pod "MochaAsyncTest", :path => "../"
+end
+
+target 'Tests', :exclusive => true do
+  pod "MochaAsyncTest", :path => "../"
+
+  pod 'Kiwi'
+end
