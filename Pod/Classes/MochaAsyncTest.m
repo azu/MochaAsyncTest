@@ -22,12 +22,11 @@
             isTimeout = NO;
             *finish = YES;
             NSLog(@"Fail Error: %@", error);
-            XCTFail(@"Done Error");
+            XCTFail(@"%@", @"Done Error");
         });
     } timeoutInterval:timeout];
     if (isTimeout) {
-
-        XCTFail(@"Timeout Error");
+        XCTFail(@"%@", @"Timeout Error");
     }
 }
 @end
