@@ -38,11 +38,11 @@ You can use it for async test.
 
 ### done
 
-When pass the test then call `done()`
+When pass the test, you have to call `done()`
 
 ### error
 
-When fail the test then call `error(NSError *error)`
+When fail the test, you have to call `error(NSError *error)`
 
 ```objc
 describe(@"MochaAsyncTest", ^{
